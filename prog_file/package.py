@@ -1,4 +1,5 @@
 import segno, os
+import csv
 import pandas as pd
 from PIL import Image
 from PIL import Image, ImageDraw, ImageFont
@@ -35,6 +36,16 @@ def out_white(text):
 #     img_box.paste(qr1,(400, 100))
 
 #     img_box.save("FN/qr_box.png")
+
+
+def history():
+    global scanned
+    with open("history.csv", mode="w", encoding='utf-8') as w_file:
+        file_writer = csv.writer(w_file, delimiter = ",", lineterminator="\r\n")
+        for i in range(len(scanned)):
+            file_writer.writerow(scanned[i])
+            
+
 
 
 def qr(fn,tik,pr):
